@@ -2,6 +2,21 @@
 let firstNumber
 let secondNumber
 let operator
+let displayValue 
+let display = ''
+let buttonsArray = document.querySelectorAll("button");
+
+//Create function to show numbers on display when clicked
+for (let i = 0; i < buttonsArray.length; i++) {
+    buttonsArray[i].addEventListener('click', function (e) {
+        let selectDisplay = document.querySelector(".display")
+        let buttonClicked = String(buttonsArray[i].textContent)
+        selectDisplay.textContent = display + " "  + buttonClicked
+        display = selectDisplay.textContent
+    })
+}
+
+
 
 function operate (firstNumber, secondNumber, operator) {
     if (operator == "+") {
@@ -15,12 +30,10 @@ function operate (firstNumber, secondNumber, operator) {
         return multiply(firstNumber, secondNumber)
     }
 
-    else (operator == "/") {
+    else if (operator == "/") {
         return divide(firstNumber, secondNumber)
     }
 }
-
-console.log(operate(3, 1, "/"))
 
 // Functions for basic math operators
 function add(n1, n2) {
