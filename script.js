@@ -15,7 +15,7 @@ function operate (firstNumber, secondNumber, operator) {
         return multiply(firstNumber, secondNumber)
     }
 
-    if (operator == "/") {
+    else (operator == "/") {
         return divide(firstNumber, secondNumber)
     }
 }
