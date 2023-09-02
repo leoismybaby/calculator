@@ -4,14 +4,18 @@ let secondNumber
 let operator
 let displayValue = ''
 let digitArray = document.querySelectorAll(".digit");
+let display = document.querySelector(".display")
 
-//Create function to 
-
+// Function to clear display
+let clearDisplay = document.querySelector('#clear')
+clearDisplay.addEventListener('click', function (e) {
+    displayValue = ''
+    display.textContent = displayValue
+})
 
 //Create function to show digits on display when clicked
 for (let i = 0; i < digitArray.length; i++) {
     digitArray[i].addEventListener('click', function (e) {
-        let display = document.querySelector(".display")
         displayValue = displayValue + String(digitArray[i].textContent)
         display.textContent = displayValue
         console.log(displayValue)
@@ -35,10 +39,6 @@ function operate (firstNumber, secondNumber, operator) {
         return divide(firstNumber, secondNumber)
     }
 }
-
-// Function to clear display
- // clear display
- //reset all variables to 0 or baseline
 
 // Functions for basic math operators
 function add(n1, n2) {
