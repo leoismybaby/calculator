@@ -4,7 +4,41 @@ let secondNumber
 let operator
 let displayValue = ''
 let digitArray = document.querySelectorAll(".digit");
+let operatorsArray = document.querySelectorAll('.operator')
 let display = document.querySelector(".display")
+
+//function for operators
+// when operator clicked, 
+for (let i = 0; i < operatorsArray.length; i++) {
+    operatorsArray[i].addEventListener('click', function (e){
+        // store operator in variable
+        if (operatorsArray[i].textContent == '÷') {
+            operator = "/" }
+        else if (operatorsArray[i].textContent == '−') { 
+            operator = "-"}
+        else if (operatorsArray[i].textContent == 'x') {
+            operator = "*"
+        }
+        else {operator = operatorsArray[i].textContent}
+        console.log(`operator: ${operator}`)
+         // store display value as firstNumber
+        firstNumber = displayValue
+        console.log(`firstNumber: ${firstNumber}`)
+        // clear displayvalue
+        displayValue = ''
+    })
+    
+}
+
+
+
+
+//function for = operator
+// when = clicked
+// store displayvalue as secondNumber
+// update displayvalue to be result of expr
+    // displayValue = operate(firstNum, secNum, operator)
+// show displayValue on screen 
 
 // Function to clear display
 let clearDisplay = document.querySelector('#clear')
@@ -13,15 +47,13 @@ clearDisplay.addEventListener('click', function (e) {
     display.textContent = displayValue
 })
 
-//Create function to show digits on display when clicked
+//function to show digits on display when clicked
 for (let i = 0; i < digitArray.length; i++) {
     digitArray[i].addEventListener('click', function (e) {
         displayValue = displayValue + String(digitArray[i].textContent)
         display.textContent = displayValue
-        console.log(displayValue)
     })
 }
-
 
 function operate (firstNumber, secondNumber, operator) {
     if (operator == "+") {
