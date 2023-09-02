@@ -2,30 +2,21 @@
 let firstNumber
 let secondNumber
 let operator
-let displayValue 
+let displayValue = ''
 let digitArray = document.querySelectorAll(".digit");
 
-//Next steps:
-//1. Store expression in variable "display"
-//2. When "=" is pressed, create function to
-//   evaluate expression:
-//      while expr.includes / => search("&divide") 
-//          use operate and assign value to varibale
-//          make value into string and replace what 
-//          was calculated using indexes
-//   return display.textcontent = displayValue
-//3. 
+//Create function to 
 
-//Create function to show numbers on display when clicked
+
+//Create function to show digits on display when clicked
 for (let i = 0; i < digitArray.length; i++) {
     digitArray[i].addEventListener('click', function (e) {
         let display = document.querySelector(".display")
-        display.textContent = String(digitArray[i].textContent)
-        console.log(display.textContent)
-        
+        displayValue = displayValue + String(digitArray[i].textContent)
+        display.textContent = displayValue
+        console.log(displayValue)
     })
 }
-
 
 
 function operate (firstNumber, secondNumber, operator) {
