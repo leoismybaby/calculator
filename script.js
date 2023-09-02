@@ -17,7 +17,7 @@ for (let i = 0; i < operatorsArray.length; i++) {
         else {
             secondNumber = displayValue
             console.log(`secondNumber: ${secondNumber}`)
-            firstNumber = operate(parseInt(firstNumber), parseInt(secondNumber), operator)
+            firstNumber = operate(firstNumber, secondNumber, operator)
             display.textContent = firstNumber
             console.log(`firstNumber: ${firstNumber}`)
         }
@@ -41,15 +41,16 @@ for (let i = 0; i < operatorsArray.length; i++) {
 let compute = document.getElementById('=')
 // when = clicked
 compute.addEventListener('click', function (e){
-    // store displayvalue as secondNumber
-    secondNumber = displayValue
-    console.log(`secondnum: ${secondNumber}`)
-    firstNumber = operate(parseInt(firstNumber), parseInt(secondNumber), operator)
-    console.log(firstNumber)
-    // update displayvalue to be result of expr, show displayValue on screen 
-    display.textContent = firstNumber
-    console.log(`displayval: ${displayValue}`)
-    console.log(`firstNumber: ${firstNumber}`)
+    if (firstNumber != undefined) {
+        secondNumber = displayValue
+        firstNumber = operate(firstNumber, secondNumber, operator)
+        console.log(firstNumber)
+        console.log(secondNumber)
+        display.textContent = firstNumber
+        displayValue = firstNumber
+        console.log(displayValue)
+        firstNumber = undefined
+    }
 })
 
 //function to show digits on display when clicked
@@ -70,6 +71,8 @@ clearDisplay.addEventListener('click', function (e) {
 })
 
 function operate (firstNumber, secondNumber, operator) {
+    firstNumber = parseInt(firstNumber)
+    secondNumber = parseInt(secondNumber)
     if (operator == "+") {
         return(add(firstNumber, secondNumber))
     }
