@@ -11,6 +11,16 @@ let display = document.querySelector(".display")
 // when operator clicked, 
 for (let i = 0; i < operatorsArray.length; i++) {
     operatorsArray[i].addEventListener('click', function (e){
+         // store display value as firstNumber IF firstNumber = undefined
+        if (firstNumber == undefined) {
+         firstNumber = displayValue}
+        else {
+            secondNumber = displayValue
+            console.log(`secondNumber: ${secondNumber}`)
+            firstNumber = operate(parseInt(firstNumber), parseInt(secondNumber), operator)
+            display.textContent = firstNumber
+            console.log(`firstNumber: ${firstNumber}`)
+        }
         // store operator in variable
         if (operatorsArray[i].textContent == '÷') {
             operator = "/" }
@@ -21,16 +31,7 @@ for (let i = 0; i < operatorsArray.length; i++) {
         }
         else {operator = operatorsArray[i].textContent}
         console.log(`operator: ${operator}`)
-         // store display value as firstNumber IF firstNumber != undefined
-        if (firstNumber == undefined) {
-         firstNumber = displayValue}
-        else {
-            secondNumber = displayValue
-            console.log(`secondNumber: ${secondNumber}`)
-            firstNumber = operate(parseInt(firstNumber), parseInt(secondNumber), operator)
-            display.textContent = firstNumber
-        }
-        console.log(`firstNumber: ${firstNumber}`)
+        
         // clear displayvalue
         displayValue = ''
     })
@@ -43,12 +44,10 @@ compute.addEventListener('click', function (e){
     // store displayvalue as secondNumber
     secondNumber = displayValue
     console.log(`secondnum: ${secondNumber}`)
-    result = operate(parseInt(firstNumber), parseInt(secondNumber), operator)
-    console.log(result)
+    firstNumber = operate(parseInt(firstNumber), parseInt(secondNumber), operator)
+    console.log(firstNumber)
     // update displayvalue to be result of expr, show displayValue on screen 
-    display.textContent = result
-    displayValue = result
-    firstNumber = displayValue
+    display.textContent = firstNumber
     console.log(`displayval: ${displayValue}`)
     console.log(`firstNumber: ${firstNumber}`)
 })
@@ -58,8 +57,6 @@ for (let i = 0; i < digitArray.length; i++) {
     digitArray[i].addEventListener('click', function (e) {
         displayValue = displayValue + String(digitArray[i].textContent)
         display.textContent = displayValue
-        console.log(`firstNumber: ${firstNumber}`)
-        console.log(`displayval: ${displayValue}`)
     })
 }
 
