@@ -21,8 +21,15 @@ for (let i = 0; i < operatorsArray.length; i++) {
         }
         else {operator = operatorsArray[i].textContent}
         console.log(`operator: ${operator}`)
-         // store display value as firstNumber
-        firstNumber = displayValue
+         // store display value as firstNumber IF firstNumber != undefined
+        if (firstNumber == undefined) {
+         firstNumber = displayValue}
+        else {
+            secondNumber = displayValue
+            console.log(`secondNumber: ${secondNumber}`)
+            firstNumber = operate(parseInt(firstNumber), parseInt(secondNumber), operator)
+            display.textContent = firstNumber
+        }
         console.log(`firstNumber: ${firstNumber}`)
         // clear displayvalue
         displayValue = ''
@@ -34,21 +41,16 @@ let compute = document.getElementById('=')
 // when = clicked
 compute.addEventListener('click', function (e){
     // store displayvalue as secondNumber
-    secondNumber = parseInt(displayValue)
-    firstNumber = parseInt(firstNumber)
-    result = operate(firstNumber, secondNumber, operator)
+    secondNumber = displayValue
+    console.log(`secondnum: ${secondNumber}`)
+    result = operate(parseInt(firstNumber), parseInt(secondNumber), operator)
     console.log(result)
     // update displayvalue to be result of expr, show displayValue on screen 
     display.textContent = result
-    firstNumber = result
-})
-
-
-// Function to clear display
-let clearDisplay = document.querySelector('#clear')
-clearDisplay.addEventListener('click', function (e) {
-    displayValue = ''
-    display.textContent = displayValue
+    displayValue = result
+    firstNumber = displayValue
+    console.log(`displayval: ${displayValue}`)
+    console.log(`firstNumber: ${firstNumber}`)
 })
 
 //function to show digits on display when clicked
@@ -56,8 +58,19 @@ for (let i = 0; i < digitArray.length; i++) {
     digitArray[i].addEventListener('click', function (e) {
         displayValue = displayValue + String(digitArray[i].textContent)
         display.textContent = displayValue
+        console.log(`firstNumber: ${firstNumber}`)
+        console.log(`displayval: ${displayValue}`)
     })
 }
+
+// Function to clear display
+let clearDisplay = document.querySelector('#clear')
+clearDisplay.addEventListener('click', function (e) {
+    displayValue = ''
+    firstNumber = undefined
+    secondNumber = undefined
+    display.textContent = displayValue
+})
 
 function operate (firstNumber, secondNumber, operator) {
     if (operator == "+") {
