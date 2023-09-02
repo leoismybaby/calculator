@@ -27,18 +27,22 @@ for (let i = 0; i < operatorsArray.length; i++) {
         // clear displayvalue
         displayValue = ''
     })
-    
 }
 
-
-
-
 //function for = operator
+let compute = document.getElementById('=')
 // when = clicked
-// store displayvalue as secondNumber
-// update displayvalue to be result of expr
-    // displayValue = operate(firstNum, secNum, operator)
-// show displayValue on screen 
+compute.addEventListener('click', function (e){
+    // store displayvalue as secondNumber
+    secondNumber = parseInt(displayValue)
+    firstNumber = parseInt(firstNumber)
+    result = operate(firstNumber, secondNumber, operator)
+    console.log(result)
+    // update displayvalue to be result of expr, show displayValue on screen 
+    display.textContent = result
+    firstNumber = result
+})
+
 
 // Function to clear display
 let clearDisplay = document.querySelector('#clear')
