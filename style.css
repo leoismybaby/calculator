@@ -1,31 +1,35 @@
 body {
     display: flex;
     justify-content: center;
-    
+    background-image: linear-gradient(rgb(252, 252, 252), rgb(221, 198, 218));
 }
 
 .calculator {
-    border: 3px black solid;
-    border-radius: 10px;
+    border: 2px rgb(82, 56, 82) solid;
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
     height: 400px;
     width: 300px;
     flex-shrink: 0;
+    box-shadow: 5px 2px 2px rgb(85, 81, 81);
 }
 
 .display {
-    border: 1px black solid;
-    border-radius: 4px;
+    border: 1px rgb(119, 73, 111) solid;
+    border-radius: 15px;
     display: flex;
     flex: auto;
-    height: 10px;
+    height: 50px;
     margin: 15px 20px;
+    margin-top: 20px;
     justify-content: right;
     align-items: center;
     padding-right: 10px;
-    font-size: large;
-    background-color: rgb(224, 224, 216);
+    font-size: x-large;
+    background-color: rgb(255, 255, 255);
+    color: rgb(155, 127, 146);
+    font-weight: bolder;
 }
 
 .buttons {
@@ -43,4 +47,14 @@ body {
     height: 60px;
     width: 60px;
     margin: 2px;
+    background-color: rgb(226, 190, 215);
+    border-radius: 15px;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    font-weight: bolder;
+}
+
+#equal, #clear, .buttons > .operator {
+  background-color: rgb(196, 131, 169);  
 }
