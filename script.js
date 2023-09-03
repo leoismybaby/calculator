@@ -35,8 +35,8 @@ for (let i = 0; i < operatorsArray.length; i++) {
     })
 }
 
-//function for = operator
-let compute = document.getElementById('=')
+//function for equal operator
+let compute = document.getElementById('equal')
 // when = clicked
 compute.addEventListener('click', function (e){
     if (firstNumber != undefined) {
