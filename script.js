@@ -30,8 +30,6 @@ for (let i = 0; i < operatorsArray.length; i++) {
             operator = "*"
         }
         else {operator = operatorsArray[i].textContent}
-        console.log(`operator: ${operator}`)
-        
         // clear displayvalue
         displayValue = ''
     })
@@ -91,6 +89,8 @@ function operate (firstNumber, secondNumber, operator) {
 
 // Functions for basic math operators
 function add(n1, n2) {
+    n1 = Math.round(n1)
+    n2 = Math.round(n2)
     return n1 + n2}
 
 function subtract(n1, n2) {
@@ -100,5 +100,7 @@ function multiply (n1, n2) {
     return n1 * n2}
 
 function divide (n1, n2) {
-    return n1 / n2}
-
+    if (n2 == 0) {
+    return 'Do not do that again!'}
+    else return n1 / n2
+    }
